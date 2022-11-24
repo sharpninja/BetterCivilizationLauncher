@@ -23,16 +23,10 @@ namespace BetterCivilizationLauncher
 
         public App()
         {
-            UnhandledException += (sender, e) =>
-            {
-                Debug.WriteLine(e.Exception.ToString());
-                e.Handled = true;
-            };
-
             InitializeComponent();
 
             // TODO: Add your app in the app center and set your secret here. More at https://docs.microsoft.com/appcenter/sdk/getting-started/uwp
-            AppCenter.Start("{Your App Secret}", typeof(Analytics), typeof(Crashes));
+            //AppCenter.Start("{Your App Secret}", typeof(Analytics), typeof(Crashes));
             UnhandledException += OnAppUnhandledException;
 
             // Deferred execution until used. Check https://docs.microsoft.com/dotnet/api/system.lazy-1 for further info on Lazy<T> class.

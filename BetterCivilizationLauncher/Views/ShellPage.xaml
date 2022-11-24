@@ -9,6 +9,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:views="using:BetterCivilizationLauncher.Views"
       xmlns:winui="using:Microsoft.UI.Xaml.Controls"
+      Background="{StaticResource CivBackground}"
       mc:Ignorable="d">
 
     <i:Interaction.Behaviors>
@@ -18,48 +19,38 @@
     </i:Interaction.Behaviors>
 
     <winui:NavigationView x:Name="navigationView"
-                          Background="{StaticResource ThemeControlBackgroundBrush}"
                           BorderBrush="{StaticResource ThemeControlBorderBrush}"
-                          ExpandedModeThresholdWidth="1280"
+                          BorderThickness="1"
+                          ExpandedModeThresholdWidth="801"
                           IsBackButtonVisible="Visible"
                           IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
                           IsSettingsVisible="True"
-                          SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
+                          OpenPaneLength="240"
+                          SelectedItem="{x:Bind ViewModel.Selected, Mode=TwoWay}">
         <winui:NavigationView.MenuItems>
-            <winui:NavigationViewItem x:Uid="Shell_Launcher"
-                                      helpers:NavHelper.NavigateTo="views:LauncherPage"
-                                      Icon="" />
-            <winui:NavigationViewItem x:Uid="Shell_Systems"
-                                      helpers:NavHelper.NavigateTo="views:SystemsPage"
-                                      Icon="Document" />
-            <winui:NavigationViewItem x:Uid="Shell_News"
-                                      helpers:NavHelper.NavigateTo="views:NewsPage"
-                                      Icon="Document" />
-            <winui:NavigationViewItem x:Uid="Shell_WebView"
-                                      helpers:NavHelper.NavigateTo="views:WebViewPage"
-                                      Icon="Document" />
-            <winui:NavigationViewItem x:Uid="Shell_SchemeActivationSample"
-                                      helpers:NavHelper.NavigateTo="views:SchemeActivationSamplePage"
-                                      Icon="Document" />
+            <winui:NavigationViewItem x:Uid="Shell_Launcher" helpers:NavHelper.NavigateTo="views:LauncherPage">
+                <winui:NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xF71C;" />
+                </winui:NavigationViewItem.Icon>
+            </winui:NavigationViewItem>
+            <winui:NavigationViewItem x:Uid="Shell_Systems" helpers:NavHelper.NavigateTo="views:SystemsPage">
+                <winui:NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE770;" />
+                </winui:NavigationViewItem.Icon>
+            </winui:NavigationViewItem>
+            <winui:NavigationViewItem x:Uid="Shell_News" helpers:NavHelper.NavigateTo="views:NewsPage">
+                <winui:NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE946;" />
+                </winui:NavigationViewItem.Icon>
+            </winui:NavigationViewItem>
+            <winui:NavigationViewItem x:Uid="Shell_WebView" helpers:NavHelper.NavigateTo="views:WebViewPage">
+                <winui:NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xEB41;" />
+                </winui:NavigationViewItem.Icon>
+            </winui:NavigationViewItem>
         </winui:NavigationView.MenuItems>
-        <i:Interaction.Behaviors>
-            <behaviors:NavigationViewHeaderBehavior DefaultHeader="{x:Bind ViewModel.Selected.Content, Mode=OneWay}">
-                <behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <TextBlock Margin="{StaticResource SmallLeftRightMargin}"
-                                       Style="{ThemeResource TitleTextBlockStyle}"
-                                       Text="{Binding}" />
-                        </Grid>
-                    </DataTemplate>
-                </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
-            </behaviors:NavigationViewHeaderBehavior>
-            <ic:EventTriggerBehavior EventName="ItemInvoked">
-                <ic:InvokeCommandAction Command="{x:Bind ViewModel.ItemInvokedCommand}" />
-            </ic:EventTriggerBehavior>
-        </i:Interaction.Behaviors>
-        <Grid>
-            <Frame x:Name="shellFrame" />
-        </Grid>
+        <Frame x:Name="shellFrame"
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Stretch" />
     </winui:NavigationView>
 </Page>

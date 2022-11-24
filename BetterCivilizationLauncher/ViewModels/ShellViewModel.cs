@@ -62,13 +62,12 @@ namespace BetterCivilizationLauncher.ViewModels
             _navigationView.BackRequested += OnBackRequested;
         }
 
-        private async void OnLoaded()
+        private void OnLoaded()
         {
             // Keyboard accelerators are added here to avoid showing 'Alt + left' tooltip on the page.
             // More info on tracking issue https://github.com/Microsoft/microsoft-ui-xaml/issues/8
             _keyboardAccelerators.Add(_altLeftKeyboardAccelerator);
             _keyboardAccelerators.Add(_backKeyboardAccelerator);
-            await Task.CompletedTask;
         }
 
         private void OnItemInvoked(WinUI.NavigationViewItemInvokedEventArgs args)
